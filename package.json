@@ -3,23 +3,22 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
-    "@testing-library/user-event": "^7.1.2",
-    "@types/jest": "^24.0.0",
-    "@types/node": "^12.0.0",
-    "@types/react": "^16.9.0",
-    "@types/react-dom": "^16.9.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "react-scripts": "3.3.0",
-    "typescript": "~3.7.2"
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "3.3.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "STATUS=0; yarn lint:css || STATUS=$?; yarn lint:ts || STATUS=$?; exit $STATUS",
+    "lint:fix": "STATUS=0; yarn lint:css:fix || STATUS=$?; yarn lint:ts:fix || STATUS=$?; exit $STATUS",
+    "lint:ts": "yarn eslint 'src/**/*.{tsx,ts,jsx,js}'",
+    "lint:ts:fix": "yarn eslint 'src/**/*.{tsx,ts,jsx,js}' --fix",
+    "lint:css": "yarn stylelint 'src/**/*.css'",
+    "lint:css:fix": "yarn stylelint 'src/**/*.css' --fix"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -35,5 +34,24 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^5.0.2",
+    "@testing-library/react": "^9.4.0",
+    "@types/jest": "^24.9.1",
+    "@types/node": "^13.5.0",
+    "@types/react": "^16.9.19",
+    "@types/react-dom": "^16.9.5",
+    "@types/react-router-dom": "^5.1.3",
+    "@typescript-eslint/eslint-plugin": "^2.17.0",
+    "@typescript-eslint/parser": "^2.17.0",
+    "eslint": "^6.8.0",
+    "eslint-plugin-jest": "^23.6.0",
+    "eslint-plugin-react": "^7.18.0",
+    "stylelint": "^13.0.0",
+    "stylelint-config-css-modules": "^2.2.0",
+    "stylelint-config-standard": "^19.0.0",
+    "typescript": "^3.7.5",
+    "typescript-plugin-css-modules": "^2.1.2"
   }
 }
