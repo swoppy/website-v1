@@ -1,17 +1,17 @@
 import { UnreachableError } from './base/error';
 
 export enum BaseRoute {
-  ROOT,
+  HOME,
   ABOUT,
 }
 
 export type Route =
- | { route: BaseRoute.ROOT }
+ | { route: BaseRoute.HOME }
  | { route: BaseRoute.ABOUT };
 
 export const RouteToString = (path: Route) => {
   switch(path.route) {
-    case BaseRoute.ROOT: {
+    case BaseRoute.HOME: {
       return '/';
     }
     case BaseRoute.ABOUT: {
