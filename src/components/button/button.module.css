@@ -1,0 +1,53 @@
+
+@value redColor: #e75349;
+@value yellowColor: #e5c30c;
+@value greenColor: #3bb763;
+
+.baseBgPoistion {
+  background-size: contain;
+  background-position: center;
+}
+
+.baseButton {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  cursor: pointer;
+  composes: baseBgPoistion;
+  display: flex;
+  justify-content: center;
+}
+
+.closedButton {
+  composes: baseButton;
+  background-color: redColor;
+}
+
+.maximizeButton {
+  composes: baseButton;
+  background-color: greenColor;
+}
+
+.minimizeButton {
+  composes: baseButton;
+  background-color: yellowColor;
+}
+
+.closedButton:hover {
+  background-image: url('assets/button/close/close.png');
+}
+
+.maximizeButton:hover {
+  background-image: url('assets/button/maximize/maximize.png');
+}
+
+.minimizeButton:hover {
+  background-image: url('assets/button/minimize/minimize.png');
+}
+
+.actionButtonContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 90px;
+}
