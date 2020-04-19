@@ -1,0 +1,28 @@
+@value headerBackground: #4f4f4f;
+@value headerBorder: #595959;
+@value workspaceBgColor: #1d1d1d;
+
+.container {
+  width: 700px;
+  height: 800px;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  background-color: headerBackground;
+  padding: 6px;
+  border-radius: 10px 10px 0 0;
+}
+
+.buttonWrapper {
+  display: flex;
+  width: 65px;
+  justify-content: space-evenly;
+}
+
+.workspace {
+  background-color: workspaceBgColor;
+  height: 100%;
+  border-radius: 0 0 10px 10px;
+}
