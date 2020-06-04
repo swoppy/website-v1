@@ -34,15 +34,15 @@
 }
 
 .closedButton:hover {
-  background-image: url('assets/button/close/close.png');
+  background-image: url('../../assets/button/close/close.png');
 }
 
 .maximizeButton:hover {
-  background-image: url('assets/button/maximize/maximize.png');
+  background-image: url('../../assets/button/maximize/maximize.png');
 }
 
 .minimizeButton:hover {
-  background-image: url('assets/button/minimize/minimize.png');
+  background-image: url('../../assets/button/minimize/minimize.png');
 }
 
 .actionButtonContainer {
