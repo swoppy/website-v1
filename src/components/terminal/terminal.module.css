@@ -25,4 +25,6 @@
   background-color: workspaceBgColor;
   height: 100%;
   border-radius: 0 0 10px 10px;
+  display: flex;
+  flex-direction: row;
 }

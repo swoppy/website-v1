@@ -16,7 +16,12 @@ export const Terminal = () => {
         </div>
       </div>
       <div className={styles.workspace}>
-
+        <div>
+          location
+        </div>
+        <div>
+          input
+        </div>
       </div>
     </div>
   );
