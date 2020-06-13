@@ -1,5 +1,14 @@
 @import '../../assets/fonts.css';
 @value mineShaft from '../../assets/colors.css';
+@value codGray from '../../assets/colors.css';
+@value mercury from '../../assets/colors.css';
+@value whiteColor from '../../assets/colors.css';
+@value boulder from '../../assets/colors.css';
+@value outerSpace from '../../assets/colors.css';
+@value lilacBush from '../../assets/colors.css';
+@value twitterBlue from '../../assets/colors.css';
+@value tundora from '../../assets/colors.css';
+@value silverColor from '../../assets/colors.css';
 
 .container {
   display: flex;
@@ -10,20 +19,122 @@
 
 .controlSpace {
   flex: 1;
-}
-
-.detailSpace {
-  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .controlHeader {
-  background-color: mineShaft;
   padding: 14px 0;
   display: flex;
   justify-content: flex-end;
+}
+
+.lightControlHeader {
+  composes: controlHeader;
+  background-color: whiteColor;
+  box-shadow: 0px 8px 5px -5px rgba(0,0,0,0.18);
+  z-index: 1;
+}
+
+.darkControlHeader {
+  composes: controlHeader;
+  background-color: mineShaft;
 }
 
 .knobContainer {
   margin-right: 14px;
 }
 
+.navigationSection {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  flex: 1;
+  align-items: center;
+}
+
+.lightNavigationSection {
+  composes: navigationSection;
+  background-color: mercury;
+  color: mineShaft;
+}
+
+.darkNavigationSection {
+  composes: navigationSection;
+  background-color: codGray;
+}
+
+.optionsContainer {
+  height: fit-content;
+  font-family: 'raleway';
+  font-weight: 600;
+  font-size: 36px;
+  letter-spacing: 4px;
+}
+
+div.optionsContainer * {
+  padding: 12px 8px;
+  cursor: pointer;
+}
+
+div.optionsContainer *:hover {
+  background-color: lilacBush;
+}
+
+.socialLinksContainer {
+  padding: 14px 14px;
+  display: flex;
+}
+
+.socialLinksContainer div {
+  margin-right: 8px;
+}
+
+.lightSocialLinksContainer {
+  composes: socialLinksContainer;
+  background-color: mercury;
+}
+
+.darkSocialLinksContainer {
+  composes: socialLinksContainer;
+  background-color: codGray;
+}
+
+.controlFooter {
+  font-family: 'raleway';
+  background-color: mineShaft;
+  text-align: center;
+  font-size: 12px;
+  padding: 14px 0;
+  letter-spacing: 0.8px;
+  line-height: 14px;
+}
+
+.lightControlFooter {
+  composes: controlFooter;
+  background-color: whiteColor;
+  color: boulder;
+  font-weight: 600;
+}
+
+.darkControlFooter {
+  composes: controlFooter;
+  background-color: mineShaft;
+  color: whiteColor;
+}
+
+.detailSpace {
+  flex: 1;
+  height: 100%;
+}
+
+.lightDetailSpace {
+  composes: detailSpace;
+  background-color: silverColor;
+}
+
+.darkDetailSpace {
+  composes: detailSpace;
+  background-color: outerSpace;
+}
