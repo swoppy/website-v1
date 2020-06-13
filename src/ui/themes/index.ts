@@ -6,7 +6,7 @@ export enum Theme {
   DARK = 'dark',
 }
 
-const getTheme = (localItem: string | null): Theme => {
+export const getTheme = (localItem: string | null): Theme => {
   if (localItem === Theme.LIGHT) {
     return Theme.LIGHT;
   }
@@ -18,8 +18,8 @@ const getTheme = (localItem: string | null): Theme => {
   }
 };
 
-export const GlobalThemeStore = observable.box(getTheme(localStorage.getItem('theme')));
-export const ThemeContext = React.createContext(getTheme(localStorage.getItem('theme')));
+export const GlobalThemeStore = observable.box(getTheme(localStorage.getItem('swoppy-theme')));
+export const ThemeContext = React.createContext(getTheme(localStorage.getItem('swoppy-theme')));
 export const ThemeProvider = ThemeContext.Provider;
 export const ThemeConsumer = ThemeContext.Consumer;
 
