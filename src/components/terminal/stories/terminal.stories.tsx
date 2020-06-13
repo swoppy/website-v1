@@ -3,13 +3,13 @@ import { Terminal } from '../terminal';
 import { Pager } from '../../layouts/pager/pager';
 
 export default {
-  title: 'Terminal',
+  title: 'Components/Terminal',
   component: Terminal,
 };
 
 export const TerminalStory = () => {
   return (
-    <Pager bgColor={'#1a2737'}>
+    <Pager>
       <Terminal/>
     </Pager>
   );
