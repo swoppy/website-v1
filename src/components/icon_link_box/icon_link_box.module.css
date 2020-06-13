@@ -1,0 +1,38 @@
+@value whiteColor from '../../assets/colors.css';
+@value mineShaft from '../../assets/colors.css';
+@value twitterBlue from '../../assets/colors.css';
+@value tundora from '../../assets/colors.css';
+
+.box {
+  width: 34px;
+  height: 34px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+}
+
+.lightBox {
+  composes: box;
+  background-color: whiteColor;
+}
+
+.darkBox {
+  composes: box;
+  background-color: mineShaft;
+}
+
+.link {
+  text-decoration: none;
+}
+
+.lightLink {
+  composes: link;
+  color: tundora;
+}
+
+.darkLink {
+  composes: link;
+  color: whiteColor;
+}

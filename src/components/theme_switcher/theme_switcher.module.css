@@ -1,4 +1,5 @@
 @value lilacBush from '../../assets/colors.css';
+@value mineShaft from '../../assets/colors.css';
 @value blackColor from '../../assets/colors.css';
 
 .logoContainer {
@@ -8,7 +9,7 @@
 
 .lightLogoContainer {
   composes: logoContainer;
-  color: blackColor;
+  color: mineShaft;
 }
 
 .darkLogoContainer {
