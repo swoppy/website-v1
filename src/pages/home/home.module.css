@@ -18,12 +18,12 @@
 
 .controlHeader {
   background-color: mineShaft;
-  padding: 10px 0;
+  padding: 14px 0;
   display: flex;
   justify-content: flex-end;
 }
 
 .knobContainer {
-  margin-right: 10px;
+  margin-right: 14px;
 }
 

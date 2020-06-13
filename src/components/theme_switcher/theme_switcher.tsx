@@ -30,7 +30,7 @@ export const ThemeSwitcher = observer(({ store }: BaseThemeSwitcherProps) => {
   }, [store]);
   return (
     <div className={styles.logoContainer} onClick={handleClick}>
-      <FontAwesomeIcon icon={store.value ? faMoon : faSun}/>
+      <FontAwesomeIcon icon={store.value ? faSun : faMoon}/>
     </div>
   );
 });
