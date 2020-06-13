@@ -1,4 +1,25 @@
-.container {
-  width: 100%;
+@value blackColor from '../../../assets/colors.css';
+@value whiteColor from '../../../assets/colors.css';
+
+.baseBackground {
+  box-sizing: border-box;
   height: 100%;
+  width: 100%;
+}
+
+.daylightBackground {
+  composes: baseBackground;
+  color: blackColor;
+  background: whiteColor;
+}
+
+.midnightBackground {
+  composes: baseBackground;
+  background: blackColor;
+  color: whiteColor;
+}
+
+.animation {
+  opacity: 0;
+  animation: fadeIn 1s ease-in-out forwards;
 }

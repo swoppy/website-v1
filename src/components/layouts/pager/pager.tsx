@@ -1,16 +1,29 @@
 import React from 'react';
-import styles from './pager.module.css';
+import baseStyles from './pager.module.css';
+import { ThemedStyles, Theme, useStyles } from '../../../ui/themes';
+
+type PagerStyles = {
+  background: string;
+};
+
+const themedStyles: ThemedStyles<PagerStyles> = {
+  [Theme.LIGHT]: {
+    background: baseStyles.daylightBackground,
+  },
+  [Theme.DARK]: {
+    background: baseStyles.midnightBackground,
+  },
+};
 
 type PagerProps = {
   children: React.ReactNode;
-  bgColor: string;
 };
 
-// Initially, this component is just simply a background wrapper but could be something more
-export const Pager = ({ children, bgColor }: PagerProps) => {
+export const Pager = React.memo(({ children }: PagerProps) => {
+  const styles = useStyles(themedStyles);
   return (
-    <div className={styles.container} style={{ backgroundColor: bgColor }}>
+    <div className={styles.background}>
       {children}
     </div>
   );
-};
+});
