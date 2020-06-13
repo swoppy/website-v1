@@ -1,63 +1,29 @@
 @import '../../assets/fonts.css';
+@value mineShaft from '../../assets/colors.css';
 
-@value space: 26px;
-
-.topContainer {
-  background-color: black;
-  color: whitesmoke;
+.container {
   display: flex;
-  justify-content: space-around;
+  flex-direction: row-reverse;
+  align-items: flex-start;
+  height: 100%;
 }
 
-.avatarContainer {
-  padding: space;
+.controlSpace {
+  flex: 1;
 }
 
-.themeContainer {
-  align-self: center;
-  padding-right: space;
+.detailSpace {
+  flex: 1;
 }
 
-.content {
-  color: blue;
-  margin-top: 40px;
+.controlHeader {
+  background-color: mineShaft;
+  padding: 10px 0;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
 }
 
-.row {
-  display: flex;
-  flex-direction: row;
-  width: 72%;
-  justify-content: space-between;
+.knobContainer {
+  margin-right: 10px;
 }
 
-.textContainer {
-  display: flex;
-  flex-direction: column;
-  width: 280px;
-  font-family: 'Oxygen', sans-serif;
-}
-
-.textContainer span:nth-child(1) {
-  font-weight: 600;
-  font-size: 14px;
-}
-
-.textContainer span:nth-child(2) {
-  font-weight: 600;
-  font-size: 60px;
-  line-height: 64px;
-}
-
-.textContainer span:nth-child(3) {
-  font-weight: 400;
-  color: black;
-  margin-top: 20px;
-  font-size: 14px;
-  line-height: 22px;
-}
-
-.socialLinks {
-  margin-top: space;
-}
