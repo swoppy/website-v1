@@ -20,11 +20,15 @@
   height: 100%;
 }
 
-.controlSpace {
-  flex: 1;
+.baseSpace {
   display: flex;
   flex-direction: column;
   height: 100%;
+}
+
+.controlSpace {
+  flex: 1;
+  composes: baseSpace;
 }
 
 .controlHeader {
@@ -116,7 +120,7 @@ div.optionsContainer *:hover {
   font-size: 12px;
   padding: space 0;
   letter-spacing: 0.8px;
-  line-height: space;
+  line-height: 18px;
 }
 
 .lightControlFooter {
@@ -134,7 +138,7 @@ div.optionsContainer *:hover {
 
 .detailSpace {
   flex: 1;
-  height: 100%;
+  composes: baseSpace;
 }
 
 .lightDetailSpace {
@@ -148,9 +152,16 @@ div.optionsContainer *:hover {
 }
 
 .detailHeader {
+  display: flex;
+  justify-content: space-between;
   margin-left: space;
-  padding: space 0;
+  padding: space space;
   composes: baseOptionsStyle;
+}
+
+.detailHeader svg {
+  font-size: 28px;
+  cursor: pointer;
 }
 
 .lightDetailHeader {
@@ -164,6 +175,7 @@ div.optionsContainer *:hover {
 }
 
 .details {
+  flex: 1;
   margin: calc(space * 2) calc(space * 2);
   font-family: 'raleway';
   font-size: 22px;
@@ -179,4 +191,14 @@ div.optionsContainer *:hover {
 .darkDetails {
   composes: details;
   color: silverApprox;
+}
+
+.detailFooter {
+  padding: space space;
+  display: flex;
+  /* border: 1px solid aqua; */
+}
+
+.detailFooter div {
+  margin-right: 6px;
 }

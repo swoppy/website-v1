@@ -8,6 +8,10 @@ export default {
   footLink: () => 'site code can be found here',
   twitLink: () => 'https://twitter.com/swoppy_',
   gitLink: () => 'https://github.com/swoppy',
+  xmrAddress: () => '84rRE69ojJL7jqNXHuygDtDcTFK6hpMLgA3YN9SsMKBGWGzoYUKGQkZinnPvQkTkGvPNJFgcriC4tPHFni3mGJFdUUzh5n4',
+  btcAddress: () => 'bc1qgxzkqq6sfemcu679qqhtkp7elae9n7x3tg5w9',
+  tipBTC: () => 'tip BTC',
+  tipXMR: () => 'tip XMR',
   aboutDetail: () => `
     ${p(`
       Hi my name is Jason and I’m a frontend developer.
@@ -19,8 +23,8 @@ export default {
     ${p(`
       When I’m not working or doing any programming,
       I like to watch various markets like stocks,
-      forex and cryptocurrencies as such
-      if you could indulge me with my reflinks, here you go :)
+      forex and cryptocurrencies,
+      also dabbles in indoor farming.
     `)}
   `,
 };

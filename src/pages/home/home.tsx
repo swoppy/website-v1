@@ -7,9 +7,16 @@ import { observer } from 'mobx-react';
 import { ThemeSwitcher } from '../../components/theme_switcher/theme_switcher';
 import { HomeStore } from './home_store';
 import { IconLinkBox } from '../../components/icon_link_box/icon_link_box';
-import { faTwitter, faGithub } from '@fortawesome/free-brands-svg-icons';
-import { DivClickEvent, DivFuncEventType } from '../../types/base/events';
+import { DivClickEvent, DivFuncEventType, SvgFuncEventType } from '../../types/base/events';
 import ReactHtmlParser from 'react-html-parser';
+import { TipBox } from '../../components/tip_box/tip_box';
+import qrBtc from '../../assets/img/qr/btc_qr.png';
+import qrXmr from '../../assets/img/qr/xmr_qr.png';
+
+// TODO: import is from a separate file using svg-core library
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTwitter, faGithub } from '@fortawesome/free-brands-svg-icons';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 type HomeStyle = {
   container: string;
@@ -23,6 +30,7 @@ type HomeStyle = {
   controlFooter: string;
   detailHeader: string;
   details: string;
+  detailFooter: string;
 };
 
 const themedStyles: ThemedStyles<HomeStyle> = {
@@ -38,6 +46,7 @@ const themedStyles: ThemedStyles<HomeStyle> = {
     controlFooter: baseStyles.lightControlFooter,
     detailHeader: baseStyles.lightDetailHeader,
     details: baseStyles.lightDetails,
+    detailFooter: baseStyles.detailFooter,
   },
   [Theme.DARK]: {
     container: baseStyles.container,
@@ -51,6 +60,7 @@ const themedStyles: ThemedStyles<HomeStyle> = {
     controlFooter: baseStyles.darkControlFooter,
     detailHeader: baseStyles.darkDetailHeader,
     details: baseStyles.darkDetails,
+    detailFooter: baseStyles.detailFooter,
   },
 };
 
@@ -91,6 +101,13 @@ const ControlSpace = observer(({ store, handleActive }: ControlSpaceProps) => {
   );
 });
 
+const Projects = () => {
+  return (
+    <>
+    </>
+  );
+};
+
 const getDetailsByActive = (active: string | null) => {
   switch(active) {
     case text.about():
@@ -98,25 +115,70 @@ const getDetailsByActive = (active: string | null) => {
     case text.projects():
       return text.projects();
     case text.contact():
-      return text.contact();
+      // for the meantime, to test render jsx node
+      return <IconLinkBox link={text.twitLink()} icon={faTwitter}/>;
     default:
       return '';
   }
 }
 
-type DetailSpaceProps = {
+type DetailHeaderProps = {
   active: string | null;
+  closeFunc: SvgFuncEventType;
 };
 
-const DetailSpace = ({ active }: DetailSpaceProps) => {
+const DetailHeader = ({ active, closeFunc }: DetailHeaderProps) => {
   const styles = useStyles(themedStyles);
+  if(!active) {
+    return null;
+  }
+  return (
+    <div className={styles.detailHeader}>
+      <div>{active}</div>
+      <FontAwesomeIcon icon={faTimes} onClick={closeFunc}/>
+    </div>
+  );
+};
+
+type DetailSpaceProps = {
+  active: string | null;
+  closeFunc: SvgFuncEventType;
+};
+
+const DetailSpace = ({ active, closeFunc }: DetailSpaceProps) => {
+  const styles = useStyles(themedStyles);
+  const tipBoxDetail: { qrPath: string, label: string, toolTip: string }[] = [
+    {
+      qrPath: qrBtc,
+      label: text.tipBTC(),
+      toolTip: text.btcAddress(),
+    },
+    {
+      qrPath: qrXmr,
+      label: text.tipXMR(),
+      toolTip: text.xmrAddress(),
+    }
+  ];
   return (
     <div className={styles.detailSpace}>
-      <div className={styles.detailHeader}>
-        {active}
-      </div>
+      <DetailHeader active={active} closeFunc={closeFunc}/>
       <div className={styles.details}>
-        {ReactHtmlParser(`${getDetailsByActive(active)}`)}
+        {active === text.contact() ?
+          getDetailsByActive(active) :
+          ReactHtmlParser(`${getDetailsByActive(active)}`)
+        }
+      </div>
+      <div className={styles.detailFooter}>
+        {tipBoxDetail.map((item, key) => {
+          return (
+            <TipBox
+              key={key}
+              qrPath={item.qrPath}
+              label={item.label}
+              tooltip={item.toolTip}
+            />
+          );
+        })}
       </div>
     </div>
   );
@@ -132,11 +194,14 @@ const BaseHome = ({ store }: BaseHomeProps) => {
   const handleActive = React.useCallback((event: DivClickEvent) => {
     setActive(event.currentTarget.textContent);
   }, []);
+  const handleClose = () => {
+    setActive(null);
+  };
   return (
     <Pager>
       <div className={styles.container}>
         <ControlSpace store={store} handleActive={handleActive}/>
-        <DetailSpace active={active}/>
+        <DetailSpace active={active} closeFunc={handleClose}/>
       </div>
     </Pager>
   );
