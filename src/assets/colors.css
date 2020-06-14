@@ -1,5 +1,6 @@
 @value codGray: #171717;
 @value mineShaft: #2E2E2E;
+@value mineShaftApprox: #212121;
 @value lilacBush: #9578D4;
 @value outerSpace: #242929;
 @value bermuda: #78D4BE;
@@ -9,4 +10,5 @@
 @value mercury: #E2E2E2;
 @value boulder: #747474;
 @value tundora: #484848;
-@value silverColor: #C0C0C0;
+@value silverSolid: #C0C0C0;
+@value silverApprox: #c4c4c4;
