@@ -1,5 +1,6 @@
 @import '../../assets/fonts.css';
 @value mineShaft from '../../assets/colors.css';
+@value mineShaftApprox from '../../assets/colors.css';
 @value codGray from '../../assets/colors.css';
 @value mercury from '../../assets/colors.css';
 @value whiteColor from '../../assets/colors.css';
@@ -8,7 +9,9 @@
 @value lilacBush from '../../assets/colors.css';
 @value twitterBlue from '../../assets/colors.css';
 @value tundora from '../../assets/colors.css';
-@value silverColor from '../../assets/colors.css';
+@value silverSolid from '../../assets/colors.css';
+@value silverApprox from '../../assets/colors.css';
+@value space: 14px;
 
 .container {
   display: flex;
@@ -25,7 +28,7 @@
 }
 
 .controlHeader {
-  padding: 14px 0;
+  padding: space 0;
   display: flex;
   justify-content: flex-end;
 }
@@ -39,11 +42,11 @@
 
 .darkControlHeader {
   composes: controlHeader;
-  background-color: mineShaft;
+  background-color: mineShaftApprox;
 }
 
 .knobContainer {
-  margin-right: 14px;
+  margin-right: space;
 }
 
 .navigationSection {
@@ -63,14 +66,19 @@
 .darkNavigationSection {
   composes: navigationSection;
   background-color: codGray;
+  color: WhiteColor;
+}
+
+.baseOptionsStyle {
+  font-family: 'raleway';
+  font-weight: 800;
+  font-size: 36px;
+  letter-spacing: 4px;
 }
 
 .optionsContainer {
   height: fit-content;
-  font-family: 'raleway';
-  font-weight: 600;
-  font-size: 36px;
-  letter-spacing: 4px;
+  composes: baseOptionsStyle;
 }
 
 div.optionsContainer * {
@@ -83,7 +91,7 @@ div.optionsContainer *:hover {
 }
 
 .socialLinksContainer {
-  padding: 14px 14px;
+  padding: space space;
   display: flex;
 }
 
@@ -106,9 +114,9 @@ div.optionsContainer *:hover {
   background-color: mineShaft;
   text-align: center;
   font-size: 12px;
-  padding: 14px 0;
+  padding: space 0;
   letter-spacing: 0.8px;
-  line-height: 14px;
+  line-height: space;
 }
 
 .lightControlFooter {
@@ -120,8 +128,8 @@ div.optionsContainer *:hover {
 
 .darkControlFooter {
   composes: controlFooter;
-  background-color: mineShaft;
-  color: whiteColor;
+  background-color: mineShaftApprox;
+  color: silverApprox;
 }
 
 .detailSpace {
@@ -131,10 +139,44 @@ div.optionsContainer *:hover {
 
 .lightDetailSpace {
   composes: detailSpace;
-  background-color: silverColor;
+  background-color: silverSolid;
 }
 
 .darkDetailSpace {
   composes: detailSpace;
-  background-color: outerSpace;
+  background-color: mineShaft;
+}
+
+.detailHeader {
+  margin-left: space;
+  padding: space 0;
+  composes: baseOptionsStyle;
+}
+
+.lightDetailHeader {
+  composes: detailHeader;
+  color: mineShaft;
+}
+
+.darkDetailHeader {
+  composes: detailHeader;
+  color: whiteColor;
+}
+
+.details {
+  margin: calc(space * 2) calc(space * 2);
+  font-family: 'raleway';
+  font-size: 22px;
+  letter-spacing: 2px;
+  line-height: 32px;
+}
+
+.lightDetails {
+  composes: details;
+  color: mineShaft;
+}
+
+.darkDetails {
+  composes: details;
+  color: silverApprox;
 }

@@ -8,6 +8,8 @@ import { ThemeSwitcher } from '../../components/theme_switcher/theme_switcher';
 import { HomeStore } from './home_store';
 import { IconLinkBox } from '../../components/icon_link_box/icon_link_box';
 import { faTwitter, faGithub } from '@fortawesome/free-brands-svg-icons';
+import { DivClickEvent, DivFuncEventType } from '../../types/base/events';
+import ReactHtmlParser from 'react-html-parser';
 
 type HomeStyle = {
   container: string;
@@ -19,6 +21,8 @@ type HomeStyle = {
   optionsContainer: string;
   socialLinksContainer: string;
   controlFooter: string;
+  detailHeader: string;
+  details: string;
 };
 
 const themedStyles: ThemedStyles<HomeStyle> = {
@@ -32,6 +36,8 @@ const themedStyles: ThemedStyles<HomeStyle> = {
     optionsContainer: baseStyles.optionsContainer,
     socialLinksContainer: baseStyles.lightSocialLinksContainer,
     controlFooter: baseStyles.lightControlFooter,
+    detailHeader: baseStyles.lightDetailHeader,
+    details: baseStyles.lightDetails,
   },
   [Theme.DARK]: {
     container: baseStyles.container,
@@ -43,14 +49,17 @@ const themedStyles: ThemedStyles<HomeStyle> = {
     optionsContainer: baseStyles.optionsContainer,
     socialLinksContainer: baseStyles.darkSocialLinksContainer,
     controlFooter: baseStyles.darkControlFooter,
+    detailHeader: baseStyles.darkDetailHeader,
+    details: baseStyles.darkDetails,
   },
 };
 
 type ControlSpaceProps = {
   store: HomeStore;
+  handleActive: DivFuncEventType;
 };
 
-const ControlSpace = observer(({ store }: ControlSpaceProps) => {
+const ControlSpace = observer(({ store, handleActive }: ControlSpaceProps) => {
   const styles = useStyles(themedStyles);
   return (
     <div className={styles.controlSpace}>
@@ -61,9 +70,9 @@ const ControlSpace = observer(({ store }: ControlSpaceProps) => {
       </div>
       <div className={styles.navigationSection}>
         <div className={styles.optionsContainer}>
-          <div>{text.about()}</div>
-          <div>{text.projects()}</div>
-          <div>{text.contact()}</div>
+          <div onClick={handleActive}>{text.about()}</div>
+          <div onClick={handleActive}>{text.projects()}</div>
+          <div onClick={handleActive}>{text.contact()}</div>
         </div>
       </div>
       <div className={styles.socialLinksContainer}>
@@ -82,11 +91,33 @@ const ControlSpace = observer(({ store }: ControlSpaceProps) => {
   );
 });
 
-const DetailSpace = () => {
+const getDetailsByActive = (active: string | null) => {
+  switch(active) {
+    case text.about():
+      return text.aboutDetail();
+    case text.projects():
+      return text.projects();
+    case text.contact():
+      return text.contact();
+    default:
+      return '';
+  }
+}
+
+type DetailSpaceProps = {
+  active: string | null;
+};
+
+const DetailSpace = ({ active }: DetailSpaceProps) => {
   const styles = useStyles(themedStyles);
   return (
     <div className={styles.detailSpace}>
- 
+      <div className={styles.detailHeader}>
+        {active}
+      </div>
+      <div className={styles.details}>
+        {ReactHtmlParser(`${getDetailsByActive(active)}`)}
+      </div>
     </div>
   );
 };
@@ -97,11 +128,15 @@ type BaseHomeProps = {
 
 const BaseHome = ({ store }: BaseHomeProps) => {
   const styles = useStyles(themedStyles);
+  const [active, setActive] = React.useState<string | null>(null);
+  const handleActive = React.useCallback((event: DivClickEvent) => {
+    setActive(event.currentTarget.textContent);
+  }, []);
   return (
     <Pager>
       <div className={styles.container}>
-        <ControlSpace store={store}/>
-        <DetailSpace/>
+        <ControlSpace store={store} handleActive={handleActive}/>
+        <DetailSpace active={active}/>
       </div>
     </Pager>
   );
